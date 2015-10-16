@@ -1,6 +1,6 @@
-var TestRoomScene = cc.Scene.extend({
+dig.TestRoomScene = cc.Scene.extend({
   onEnter: function () {
     this._super()
-    this.addChild(new TestRoomLayer())
+    this.addChild(new dig.TestRoomLayer())
   }
 })
