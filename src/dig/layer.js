@@ -1,1 +1,1 @@
-dig.Layer = dig.Node.extend(cc.Layer)
+dig.Layer = cc.Layer.extend({})

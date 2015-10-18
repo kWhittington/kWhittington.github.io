@@ -1,1 +1,1 @@
-dig.Scene = dig.Node.extend(cc.Scene)
+dig.Scene = cc.Scene

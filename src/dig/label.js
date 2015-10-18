@@ -1,1 +1,1 @@
-dig.Label = dig.Node.extend(cc.LabelTTF)
+dig.Label = cc.LabelTTF.extend({})

@@ -8,6 +8,7 @@
   "engineDir": "frameworks/cocos2d-html5",
   "modules": ["cocos2d"],
   "jsList": [
+    "lib/cc/node.js",
     "src/dig.js",
     "src/dig/node.js",
     "src/dig/label.js",
