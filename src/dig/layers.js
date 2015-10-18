@@ -1,0 +1,1 @@
+dig.Layers = dig.Layers || {}

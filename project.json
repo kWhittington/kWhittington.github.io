@@ -8,11 +8,17 @@
   "engineDir": "frameworks/cocos2d-html5",
   "modules": ["cocos2d"],
   "jsList": [
-    "src/monkeypatches/cc/node.js",
     "src/dig.js",
-    "src/labels/test_room_label.js",
-    "src/layers/test_room_layer.js",
-    "src/resource.js",
-    "src/scenes/test_room_scene.js"
+    "src/dig/node.js",
+    "src/dig/label.js",
+    "src/dig/labels.js",
+    "src/dig/labels/test_room.js",
+    "src/dig/layer.js",
+    "src/dig/layers.js",
+    "src/dig/layers/test_room.js",
+    "src/dig/scene.js",
+    "src/dig/scenes.js",
+    "src/dig/scenes/test_room.js",
+    "src/resource.js"
   ]
 }

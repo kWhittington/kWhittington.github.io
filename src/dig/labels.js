@@ -1,0 +1,1 @@
+dig.Labels = dig.Labels || {}
