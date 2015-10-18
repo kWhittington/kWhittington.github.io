@@ -20,6 +20,8 @@
     "src/dig/scene.js",
     "src/dig/scenes.js",
     "src/dig/scenes/test_room.js",
+    "src/dig/sprite.js",
+    "src/dig/dirt.js",
     "src/resource.js"
   ]
 }
