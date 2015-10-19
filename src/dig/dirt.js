@@ -5,7 +5,6 @@ dig.Dirt = dig.Sprite.extend({
     cc.eventManager.addListener({
       event: cc.EventListener.TOUCH_ALL_AT_ONCE,
       onTouchesMoved: function (touches, event) {
-        cc.log(touches)
         var touch = touches[0]
         var delta = touch.getDelta()
         var node = event.getCurrentTarget()
