@@ -1,23 +1,18 @@
-dig.EventListeners.MouseClickAndDragToMove = cc.EventListener.extend({
+dig.EventListeners.MouseClickAndDragToMove = cc.EventListener.create({
   event: cc.EventListener.MOUSE,
-  movingSprite: null,
-  isSpriteMoving: function () {
-    return this.movingSprite != null
-  },
   onMouseDown: function (event) {
-    var node = event.getCurrentTarget()
-
-    if (node.intersectsWith(event.getLocation())) {
-      this.movingSprite = node
-    }
+    event.getCurrentTarget().detectDraggingSpriteAt(event.getLocation())
   },
   onMouseMove: function (event) {
-    if (this.isSpriteMoving()) {
-      var sum = cc.pAdd(event.getDelta(), this.movingSprite.getLocation())
-      this.movingSprite.setPosition(sum)
+    if (event.getCurrentTarget().spriteBeingDragged()) {
+      var sum = cc.pAdd(
+        event.getDelta(),
+        event.getCurrentTarget().getPosition()
+      )
+      event.getCurrentTarget().dragSpriteBy(event.getDelta())
     }
   },
   onMouseUp: function (event) {
-    this.movingSprite = null
+    event.getCurrentTarget().stopDraggingSprite()
   }
 })
