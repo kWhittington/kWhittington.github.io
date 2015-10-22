@@ -25,6 +25,21 @@ dig.Layers.TestRoom = dig.Layer.extend({
     this.spriteZIndex++
   },
 
+  childrenIntersectingWith: function (point) {
+    return this.getChildren().filter(function (child) {
+      if (child.intersectsWith != null) {
+        return child.intersectsWith(point)
+      }
+      return false
+    })
+  },
+
+  childrenInDescendingOrderIntersectingWith: function (point) {
+    return this.childrenIntersectingWith(point).sort(function (x, y) {
+      return y.zIndex - x.zIndex
+    })
+  },
+
   detectDraggingSpriteAt: function (point) {
     this.startDraggingSprite(this.topChildIntersectingWith(point))
   },
@@ -47,16 +62,6 @@ dig.Layers.TestRoom = dig.Layer.extend({
   },
 
   topChildIntersectingWith: function (point) {
-    var clickedChildren = this.getChildren().filter(function (child) {
-      if (child.intersectsWith != null) {
-        return child.intersectsWith(point)
-      }
-      return false
-    })
-    var sortedChildren = clickedChildren.sort(function (x, y) {
-      return y.zIndex - x.zIndex
-    })
-    sortedChildren.forEach(function (child) { cc.log(child.zIndex) })
-    return sortedChildren[0]
+    return this.childrenInDescendingOrderIntersectingWith(point)[0]
   }
 })
