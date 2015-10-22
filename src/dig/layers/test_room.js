@@ -1,10 +1,7 @@
 dig.Layers.TestRoom = dig.Layer.extend({
   movingSprite: null,
   spriteZIndex: 0,
-  addDirt: function (dirt) {
-    this.addChild(dirt, this.spriteZIndex)
-    this.spriteZIndex++
-  },
+
   ctor: function () {
     this._super()
 
@@ -22,22 +19,33 @@ dig.Layers.TestRoom = dig.Layer.extend({
     var clickListener = dig.EventListeners.MouseClickAndDragToMove.clone()
     cc.eventManager.addListener(clickListener, this)
   },
+
+  addDirt: function (dirt) {
+    this.addChild(dirt, this.spriteZIndex)
+    this.spriteZIndex++
+  },
+
   detectDraggingSpriteAt: function (point) {
     this.startDraggingSprite(this.topChildIntersectingWith(point))
   },
+
   dragSpriteBy: function (target) {
     var sum = cc.pAdd(target, this.movingSprite.getPosition())
     this.movingSprite.setPosition(sum)
   },
+
   spriteBeingDragged: function () {
     return this.movingSprite != null
   },
+
   startDraggingSprite: function (sprite) {
     this.movingSprite = sprite
   },
+
   stopDraggingSprite: function () {
     this.movingSprite = null
   },
+
   topChildIntersectingWith: function (point) {
     var clickedChildren = this.getChildren().filter(function (child) {
       if (child.intersectsWith != null) {
