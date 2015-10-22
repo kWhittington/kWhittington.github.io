@@ -11,6 +11,8 @@
     "lib/cc/node.js",
     "src/dig.js",
     "src/dig/node.js",
+    "src/dig/event_listeners.js",
+    "src/dig/event_listeners/mouse_click_and_drag_to_move_listener.js",
     "src/dig/label.js",
     "src/dig/labels.js",
     "src/dig/labels/test_room.js",
