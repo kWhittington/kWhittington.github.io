@@ -27,6 +27,12 @@ dig.Layers.TestRoom = dig.Layer.extend({
     this.spriteZIndex++
   },
 
+  addDirtFrom: function (dirtCollection) {
+    dirtCollection.forEach(function (dirt, index) {
+      this.addDirt(dirt)
+    }, this)
+  },
+
   childrenIntersectingWith: function (point) {
     return this.getChildren().filter(function (child) {
       if (child.intersectsWith != null) {
