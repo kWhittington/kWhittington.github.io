@@ -27,6 +27,7 @@
     "src/dig/sprite.js",
     "src/dig/sprites.js",
     "src/dig/sprites/dirt.js",
+    "src/dig/sprites/dirt_bin.js",
     "src/resource.js"
   ]
 }
