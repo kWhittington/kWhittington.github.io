@@ -1,8 +1,7 @@
 dig.Sprites.Dirt = dig.Sprite.extend({
   ctor: function () {
     this._super('res/dirt.png')
-    this.width = 64
-    this.height = 64
+    this.setContentSize(cc.size(64, 64))
   },
 
   intersectsWith: function (point) {
