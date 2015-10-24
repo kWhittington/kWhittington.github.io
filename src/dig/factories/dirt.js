@@ -1,4 +1,3 @@
-dig.dirt = null
 dig.Factories.Dirt = {
   grid: function (columns, rows) {
     var dirtArray = []
