@@ -9,17 +9,12 @@ dig.Layers.TestRoom = dig.Layer.extend({
 
     var label = new dig.Labels.TestRoom()
     label.centerOn(cc.winSize)
-    var dirt = new dig.Dirt()
-    dirt.centerOn(cc.winSize)
-    var dirtTwo = new dig.Dirt()
-    dirtTwo.centerOn(cc.size(cc.winSize.width + 20, cc.winSize.height))
 
     this.addChild(label)
-    this.addDirt(dirt)
-    this.addDirt(dirtTwo)
 
     var clickListener = dig.EventListeners.MouseClickAndDragToMove.clone()
     cc.eventManager.addListener(clickListener, this)
+    this.initializeDirt()
   },
 
   addDirt: function (dirt) {
@@ -55,6 +50,10 @@ dig.Layers.TestRoom = dig.Layer.extend({
   dragSpriteBy: function (target) {
     var sum = cc.pAdd(target, this.movingSprite.getPosition())
     this.movingSprite.setPosition(sum)
+  },
+
+  initializeDirt: function () {
+    this.addDirtFrom(dig.Factories.Dirt.grid(this.dirtColumns, this.dirtRows))
   },
 
   spriteBeingDragged: function () {
