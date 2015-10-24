@@ -62,6 +62,7 @@ dig.Layers.TestRoom = dig.Layer.extend({
 
   startDraggingSprite: function (sprite) {
     this.movingSprite = sprite
+    this.movingSprite.bringToFront()
   },
 
   stopDraggingSprite: function () {
