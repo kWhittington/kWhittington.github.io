@@ -1,4 +1,6 @@
 dig.Layers.TestRoom = dig.Layer.extend({
+  dirtColumns: 7,
+  dirtRows: 6,
   movingSprite: null,
   spriteZIndex: 0,
 
