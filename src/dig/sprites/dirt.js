@@ -4,11 +4,11 @@ dig.Sprites.Dirt = dig.Sprite.extend({
     this.setContentSize(cc.size(64, 64))
   },
 
-  intersectsWith: function (point) {
-    return this.worldBoundsIntersectsWith(point)
+  intersectsWithPoint: function (point) {
+    return this.worldBoundsIntersectsWithPoint(point)
   },
 
-  worldBoundsIntersectsWith: function (point) {
+  worldBoundsIntersectsWithPoint: function (point) {
     return cc.rectContainsPoint(this.getBoundingBoxToWorld(), point)
   }
 })

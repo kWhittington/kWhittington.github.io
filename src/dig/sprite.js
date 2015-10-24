@@ -3,7 +3,7 @@ dig.Sprite = cc.Sprite.extend({
     return this.getPosition()
   },
 
-  intersectsWith: function (point) {
+  intersectsWithPoint: function (point) {
     return cc.pFuzzyEqual(this.getLocation(), point, this.radius())
   },
 
