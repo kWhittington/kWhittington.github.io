@@ -6,9 +6,5 @@ dig.Sprites.Dirt = dig.Sprite.extend({
 
   intersectsWithPoint: function (point) {
     return this.worldBoundsIntersectsWithPoint(point)
-  },
-
-  worldBoundsIntersectsWithPoint: function (point) {
-    return cc.rectContainsPoint(this.getBoundingBoxToWorld(), point)
   }
 })

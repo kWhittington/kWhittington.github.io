@@ -9,5 +9,9 @@ dig.Sprite = cc.Sprite.extend({
 
   radius: function () {
     return this.getSpriteFrame().getRect().width / 3
+  },
+
+  worldBoundsIntersectsWithPoint: function (point) {
+    return cc.rectContainsPoint(this.getBoundingBoxToWorld(), point)
   }
 })
