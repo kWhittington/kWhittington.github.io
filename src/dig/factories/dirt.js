@@ -5,7 +5,7 @@ dig.Factories.Dirt = {
 
     for (var column = 0; column < columns; column++) {
       for (var row = 0; row < rows; row++) {
-        var dirt = new dig.Dirt()
+        var dirt = new dig.Sprites.Dirt()
         dirt.setPosition(
           this.horizontalPositionOfColumn(column),
           this.verticalPositionOfRow(row)
