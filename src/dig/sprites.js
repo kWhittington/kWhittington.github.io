@@ -1,0 +1,1 @@
+dig.Sprites = dig.Sprites || {}

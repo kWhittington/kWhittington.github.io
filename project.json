@@ -25,6 +25,7 @@
     "src/dig/scenes.js",
     "src/dig/scenes/test_room.js",
     "src/dig/sprite.js",
+    "src/dig/sprites.js",
     "src/dig/dirt.js",
     "src/resource.js"
   ]
