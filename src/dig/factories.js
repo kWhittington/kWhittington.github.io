@@ -1,0 +1,1 @@
+dig.Factories = dig.Factories || {}
