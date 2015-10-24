@@ -30,7 +30,7 @@ dig.Layers.TestRoom = dig.Layer.extend({
 
   childrenIntersectingWith: function (point) {
     return this.getChildren().filter(function (child) {
-      if (child.intersectsWith != null) {
+      if (child.intersectsWithPoint != null) {
         return child.intersectsWithPoint(point)
       }
       return false
