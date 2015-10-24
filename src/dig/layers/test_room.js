@@ -44,7 +44,8 @@ dig.Layers.TestRoom = dig.Layer.extend({
   },
 
   detectDraggingSpriteAt: function (point) {
-    this.startDraggingSprite(this.topChildIntersectingWith(point))
+    if (this.childrenIntersectingWith(point).length != 0)
+      this.startDraggingSprite(this.topChildIntersectingWith(point))
   },
 
   dragSpriteBy: function (target) {
