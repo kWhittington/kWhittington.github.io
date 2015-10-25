@@ -1,6 +1,4 @@
 dig.Layers.TestRoom = dig.Layer.extend({
-  dirtColumns: 7,
-  dirtRows: 6,
   movingSprite: null,
   spriteZIndex: 0,
 
@@ -74,3 +72,9 @@ dig.Layers.TestRoom = dig.Layer.extend({
     return this.childrenInDescendingOrderIntersectingWith(point)[0]
   }
 })
+
+dig.Layers.TestRoom.DIRT_COLUMNS = 7
+dig.Layers.TestRoom.DIRT_ROWS = 6
+dig.Layers.TestRoom.STARTING_POSITIONS = {
+  DIRT_BIN: cc.p(100, 225)
+}
