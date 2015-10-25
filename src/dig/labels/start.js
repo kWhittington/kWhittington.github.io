@@ -1,9 +1,9 @@
-dig.Buttons.Redo = dig.Label.extend({
+dig.Labels.Start = dig.Label.extend({
   ctor: function () {
-    this._super('Redo', 'Monaco', 38)
+    this._super('Start', 'Monaco', 38)
     this.setFontFillColor(cc.color(255, 255, 255, 255))
     this.setHorizontalAlignment(cc.TEXT_ALIGNMENT_CENTER)
-    this.setTag(dig.Buttons.Redo.TAG)
+    this.setTag(dig.Labels.Start.TAG)
 
     cc.eventManager.addListener({
       event: cc.EventListener.TOUCH_ONE_BY_ONE,
@@ -13,11 +13,11 @@ dig.Buttons.Redo = dig.Label.extend({
           touch.getLocation()
         )
         if (wasTouched) {
-          cc.director.runScene(new dig.Scenes.Start())
+          cc.director.runScene(new dig.Scenes.TestRoom())
         }
       }
     }, this)
   }
 })
 
-dig.Buttons.Redo.TAG = 'redo_button'
+dig.Labels.Start.TAG = 'start_label'
