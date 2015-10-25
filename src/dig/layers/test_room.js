@@ -13,6 +13,7 @@ dig.Layers.TestRoom = dig.Layer.extend({
     var clickListener = dig.EventListeners.MouseClickAndDragToMove.clone()
     cc.eventManager.addListener(clickListener, this)
     this.initializeDirt()
+    this.initializeDirtBin()
   },
 
   addDirt: function (dirt) {
@@ -51,8 +52,22 @@ dig.Layers.TestRoom = dig.Layer.extend({
     this.movingSprite.setPosition(sum)
   },
 
+  getDirtBin: function () {
+    return this.getChildByTag(dig.Sprites.DirtBin.TAG)
+  },
+
   initializeDirt: function () {
-    this.addDirtFrom(dig.Factories.Dirt.grid(this.dirtColumns, this.dirtRows))
+    this.addDirtFrom(dig.Factories.Dirt.grid(
+      dig.Layers.TestRoom.DIRT_COLUMNS,
+      dig.Layers.TestRoom.DIRT_ROWS
+    ))
+  },
+
+  initializeDirtBin: function () {
+    this.addChild(new dig.Sprites.DirtBin())
+    this.getDirtBin().setPosition(
+      dig.Layers.TestRoom.STARTING_POSITIONS.DIRT_BIN
+    )
   },
 
   spriteBeingDragged: function () {
