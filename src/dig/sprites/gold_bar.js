@@ -1,4 +1,6 @@
 dig.Sprites.GoldBar = dig.Sprite.extend({
+  clickable: true,
+
   ctor: function () {
     this._super('res/gold_bar_grey.png')
     this.setContentSize(cc.size(64, 64))
@@ -19,6 +21,14 @@ dig.Sprites.GoldBar = dig.Sprite.extend({
 
   getWrongBinTag: function () {
     return dig.Sprites.DirtBin.TAG
+  },
+
+  isClickable: function () {
+    return this.clickable
+  },
+
+  removeClickableTrait: function () {
+    this.clickable = false
   }
 })
 

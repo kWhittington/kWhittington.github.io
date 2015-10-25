@@ -84,7 +84,12 @@ dig.Layers.TestRoom = dig.Layer.extend({
     var children = []
 
     return this.getChildren().filter(function (child) {
-      return dig.Layers.TestRoom.CLICKABLE_TAGS.indexOf(child.getTag()) >= 0
+      var isWhiteListed = dig.Layers.TestRoom.CLICKABLE_TAGS
+          .indexOf(child.getTag()) >= 0
+      if (isWhiteListed) {
+        return child.isClickable()
+      }
+      return false
     })
   },
 
@@ -216,6 +221,7 @@ dig.Layers.TestRoom = dig.Layer.extend({
     if (this.movingSpriteDroppedIntoCorrectBin()) {
       this.addMovingSpriteScore()
       this.addMovingSpriteMultiplier()
+      this.movingSprite.removeClickableTrait()
       this.spawnReplacementDirt()
     } else if (this.movingSpriteDroppedIntoWrongBin()) {
       this.removeMovingSpriteScore()

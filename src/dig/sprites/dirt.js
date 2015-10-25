@@ -1,4 +1,6 @@
 dig.Sprites.Dirt = dig.Sprite.extend({
+  clickable: true,
+
   ctor: function () {
     this._super('res/dirt_grey.png')
     this.setContentSize(cc.size(64, 64))
@@ -19,6 +21,14 @@ dig.Sprites.Dirt = dig.Sprite.extend({
 
   getWrongBinTag: function () {
     return dig.Sprites.GoldBin.TAG
+  },
+
+  isClickable: function () {
+    return this.clickable
+  },
+
+  removeClickableTrait: function () {
+    this.clickable = false
   }
 })
 
