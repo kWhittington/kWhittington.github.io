@@ -1,5 +1,6 @@
 dig.Layers.TestRoom = dig.Layer.extend({
   movingSprite: null,
+  movingSpriteOriginalPosition: null,
   spriteZIndex: 0,
 
   ctor: function () {
@@ -22,6 +23,10 @@ dig.Layers.TestRoom = dig.Layer.extend({
     dirtCollection.forEach(function (dirt, index) {
       this.addDirt(dirt)
     }, this)
+  },
+
+  addMovingSpriteScore: function () {
+    this.getScore().add(this.movingSprite.getScorePoint())
   },
 
   childrenIntersectingWith: function (point) {
@@ -113,17 +118,41 @@ dig.Layers.TestRoom = dig.Layer.extend({
     )
   },
 
+  movingSpriteDroppedIntoCorrectBin: function () {
+    var correctBin = this.getChildByTag(this.movingSprite.getCorrectBinTag())
+    return correctBin.intersectsSprite(this.movingSprite)
+  },
+
+  movingSpriteDroppedIntoWrongBin: function () {
+    var wrongBin = this.getChildByTag(this.movingSprite.getWrongBinTag())
+    return wrongBin.intersectsSprite(this.movingSprite)
+  },
+
+  removeMultiplier: function () {
+    this.getScore().resetMultiplier()
+  },
+
   spriteBeingDragged: function () {
     return this.movingSprite != null
   },
 
   startDraggingSprite: function (sprite) {
     this.movingSprite = sprite
+    this.movingSpriteOriginalPosition = sprite.getPosition()
     this.movingSprite.bringToFront()
   },
 
   stopDraggingSprite: function () {
+    if (this.movingSpriteDroppedIntoCorrectBin()) {
+      this.addMovingSpriteScore()
+    } else if (this.movingSpriteDroppedIntoWrongBin()) {
+      this.removeMultiplier()
+      this.removeChild(this.movingSprite)
+    } else {
+      this.movingSprite.setPosition(this.movingSpriteOriginalPosition)
+    }
     this.movingSprite = null
+    this.movingSpriteOriginalPosition = null
   },
 
   topChildIntersectingWith: function (point) {

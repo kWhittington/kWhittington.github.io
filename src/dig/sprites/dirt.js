@@ -3,6 +3,18 @@ dig.Sprites.Dirt = dig.Sprite.extend({
     this._super('res/dirt_grey.png')
     this.setContentSize(cc.size(64, 64))
     this.setTag(dig.Sprites.Dirt.TAG)
+  },
+
+  getCorrectBinTag: function () {
+    return dig.Sprites.DirtBin.TAG
+  },
+
+  getWrongBinTag: function () {
+    return dig.Sprites.GoldBin.TAG
+  },
+
+  getScorePoint: function () {
+    return 1
   }
 })
 

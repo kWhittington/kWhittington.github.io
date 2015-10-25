@@ -16,6 +16,8 @@ dig.EventListeners.MouseClickAndDragToMove = cc.EventListener.create({
   },
 
   onMouseUp: function (event) {
-    event.getCurrentTarget().stopDraggingSprite()
+    if (event.getCurrentTarget().spriteBeingDragged()) {
+      event.getCurrentTarget().stopDraggingSprite()
+    }
   }
 })

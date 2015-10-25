@@ -10,6 +10,15 @@ dig.Labels.Score = dig.Label.extend({
     this.updateScore()
   },
 
+  add: function (score) {
+    this.score = this.score + score
+    this.updateScore()
+  },
+
+  resetMultiplier: function () {
+    this.multiplier = 1
+  },
+
   updateScore: function () {
     this.setString(this.score + ' x' + this.multiplier)
   }
