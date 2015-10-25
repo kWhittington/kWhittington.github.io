@@ -130,6 +130,6 @@ dig.Layers.TestRoom.CLICKABLE_TAGS = [
 dig.Layers.TestRoom.DIRT_COLUMNS = 6
 dig.Layers.TestRoom.DIRT_ROWS = 6
 dig.Layers.TestRoom.STARTING_POSITIONS = {
-  DIRT_BIN: cc.p(100, 225),
-  GOLD_BIN: cc.p(700, 225)
+  DIRT_BIN: cc.p(100, 193),
+  GOLD_BIN: cc.p(700, 193)
 }

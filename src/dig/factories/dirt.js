@@ -24,7 +24,7 @@ dig.Factories.Dirt = {
 
   verticalPositionOfRow: function (row) {
     var height = 64
-    var padding = 65
+    var padding = 34
     return padding + height * row
   }
 }
