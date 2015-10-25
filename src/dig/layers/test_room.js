@@ -15,8 +15,10 @@ dig.Layers.TestRoom = dig.Layer.extend({
   },
 
   addDirt: function (dirt) {
+    cc.log(dirt)
+    cc.log(this.spriteZIndex)
     this.addChild(dirt, this.spriteZIndex)
-    this.spriteZIndex++
+    this.spriteZIndex--
   },
 
   addDirtFrom: function (dirtCollection) {
@@ -25,8 +27,19 @@ dig.Layers.TestRoom = dig.Layer.extend({
     }, this)
   },
 
+  addDirtLayer: function () {
+    this.addDirtFrom(dig.Factories.Dirt.mixedGrid(
+      dig.Layers.TestRoom.DIRT_COLUMNS,
+      dig.Layers.TestRoom.DIRT_ROWS
+    ))
+  },
+
   addMovingSpriteScore: function () {
     this.getScore().add(this.movingSprite.getScorePoint())
+  },
+
+  addMovingSpriteMultiplier: function () {
+    this.getScore().addToMultiplier(this.movingSprite.getMultiplier())
   },
 
   childrenIntersectingWith: function (point) {
@@ -87,7 +100,11 @@ dig.Layers.TestRoom = dig.Layer.extend({
   },
 
   getTopClickableChildIntersectingPoint: function (point) {
-    return this.getClickableChildrenIntersectingPoint(point)[0]
+    return this.getClickableChildrenIntersectingPoint(point).sort(
+      function (x, y) {
+        return y.zIndex - x.zIndex
+      }
+    )[0]
   },
 
   initializeDirt: function () {
@@ -95,6 +112,7 @@ dig.Layers.TestRoom = dig.Layer.extend({
       dig.Layers.TestRoom.DIRT_COLUMNS,
       dig.Layers.TestRoom.DIRT_ROWS
     ))
+    this.addDirtLayer()
   },
 
   initializeDirtBin: function () {
@@ -145,6 +163,7 @@ dig.Layers.TestRoom = dig.Layer.extend({
   stopDraggingSprite: function () {
     if (this.movingSpriteDroppedIntoCorrectBin()) {
       this.addMovingSpriteScore()
+      this.addMovingSpriteMultiplier()
     } else if (this.movingSpriteDroppedIntoWrongBin()) {
       this.removeMultiplier()
       this.removeChild(this.movingSprite)
@@ -161,7 +180,8 @@ dig.Layers.TestRoom = dig.Layer.extend({
 })
 
 dig.Layers.TestRoom.CLICKABLE_TAGS = [
-  dig.Sprites.Dirt.TAG
+  dig.Sprites.Dirt.TAG,
+  dig.Sprites.GoldBar.TAG
 ]
 dig.Layers.TestRoom.DIRT_COLUMNS = 6
 dig.Layers.TestRoom.DIRT_ROWS = 6

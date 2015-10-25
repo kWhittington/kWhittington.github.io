@@ -6,7 +6,7 @@ dig.Sprites.GoldBar = dig.Sprite.extend({
   },
 
   getCorrectBinTag: function () {
-    return dig.Sprites.DirtBin.TAG
+    return dig.Sprites.GoldBin.TAG
   },
 
   getMultiplier: function () {
@@ -18,7 +18,7 @@ dig.Sprites.GoldBar = dig.Sprite.extend({
   },
 
   getWrongBinTag: function () {
-    return dig.Sprites.GoldBin.TAG
+    return dig.Sprites.DirtBin.TAG
   }
 })
 

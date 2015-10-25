@@ -22,6 +22,28 @@ dig.Factories.Dirt = {
     return padding + width * column
   },
 
+  mixedGrid: function (columns, rows) {
+    var mixedArray = []
+
+    for (var column = 0; column < columns; column++) {
+      for (var row = 0; row < rows; row++) {
+        var dirt = null
+        var chance = Math.random()
+        if (chance < 0.3) {
+          dirt = new dig.Sprites.GoldBar()
+        } else {
+          dirt = new dig.Sprites.Dirt()
+        }
+        dirt.setPosition(
+          this.horizontalPositionOfColumn(column),
+          this.verticalPositionOfRow(row)
+        )
+        mixedArray.push(dirt)
+      }
+    }
+    return mixedArray
+  },
+
   verticalPositionOfRow: function (row) {
     var height = 64
     var padding = 34

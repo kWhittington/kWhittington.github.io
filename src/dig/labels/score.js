@@ -11,12 +11,18 @@ dig.Labels.Score = dig.Label.extend({
   },
 
   add: function (score) {
-    this.score = this.score + score
+    this.score = this.score + score * this.multiplier
+    this.updateScore()
+  },
+
+  addToMultiplier: function (multiplier) {
+    this.multiplier = this.multiplier + multiplier
     this.updateScore()
   },
 
   resetMultiplier: function () {
     this.multiplier = 1
+    this.updateScore()
   },
 
   updateScore: function () {
