@@ -7,6 +7,7 @@ dig.Labels.Score = dig.Label.extend({
     this._super('', 'Monaco', 38)
     this.setFontFillColor(cc.color(225, 225, 225, 255))
     this.setTag(dig.Labels.Score.TAG)
+    this.setDimensions(cc.size(300, 40))
     this.setHorizontalAlignment(cc.TEXT_ALIGNMENT_RIGHT)
     this.updateScore()
   },

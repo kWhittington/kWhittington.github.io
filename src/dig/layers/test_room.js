@@ -198,7 +198,7 @@ dig.Layers.TestRoom = dig.Layer.extend({
 
   spawnReplacementDirt: function () {
     var newDirt = null
-    if (Math.random <= this.getGoldChance()) {
+    if (Math.random() <= this.getGoldChance()) {
       newDirt = new dig.Sprites.GoldBar()
     } else {
       newDirt = new dig.Sprites.Dirt()
@@ -251,6 +251,6 @@ dig.Layers.TestRoom.STARTING_POSITIONS = {
   DIRT_BIN: cc.p(100, 193),
   GAME_OVER: cc.p(0, 0),
   GOLD_BIN: cc.p(700, 193),
-  SCORE: cc.p(727, 413),
+  SCORE: cc.p(600, 413),
   STRIKES: cc.p(145, 413)
 }
