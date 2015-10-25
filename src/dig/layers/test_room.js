@@ -14,6 +14,7 @@ dig.Layers.TestRoom = dig.Layer.extend({
     cc.eventManager.addListener(clickListener, this)
     this.initializeDirt()
     this.initializeDirtBin()
+    this.initializeGoldBin()
   },
 
   addDirt: function (dirt) {
@@ -76,6 +77,10 @@ dig.Layers.TestRoom = dig.Layer.extend({
     return this.getChildByTag(dig.Sprites.DirtBin.TAG)
   },
 
+  getGoldBin: function () {
+    return this.getChildByTag(dig.Sprites.GoldBin.TAG)
+  },
+
   getTopClickableChildIntersectingPoint: function (point) {
     return this.getClickableChildrenIntersectingPoint(point)[0]
   },
@@ -91,6 +96,13 @@ dig.Layers.TestRoom = dig.Layer.extend({
     this.addChild(new dig.Sprites.DirtBin())
     this.getDirtBin().setPosition(
       dig.Layers.TestRoom.STARTING_POSITIONS.DIRT_BIN
+    )
+  },
+
+  initializeGoldBin: function () {
+    this.addChild(new dig.Sprites.GoldBin())
+    this.getGoldBin().setPosition(
+      dig.Layers.TestRoom.STARTING_POSITIONS.GOLD_BIN
     )
   },
 
@@ -118,5 +130,6 @@ dig.Layers.TestRoom.CLICKABLE_TAGS = [
 dig.Layers.TestRoom.DIRT_COLUMNS = 6
 dig.Layers.TestRoom.DIRT_ROWS = 6
 dig.Layers.TestRoom.STARTING_POSITIONS = {
-  DIRT_BIN: cc.p(100, 225)
+  DIRT_BIN: cc.p(100, 225),
+  GOLD_BIN: cc.p(700, 225)
 }
