@@ -4,11 +4,7 @@ dig.Sprite = cc.Sprite.extend({
   },
 
   intersectsWithPoint: function (point) {
-    return cc.pFuzzyEqual(this.getLocation(), point, this.radius())
-  },
-
-  radius: function () {
-    return this.getSpriteFrame().getRect().width / 3
+    return this.worldBoundsIntersectsWithPoint(point)
   },
 
   worldBoundsIntersectsWithPoint: function (point) {

@@ -3,10 +3,6 @@ dig.Sprites.Dirt = dig.Sprite.extend({
     this._super('res/dirt.png')
     this.setContentSize(cc.size(64, 64))
     this.setTag(dig.Sprites.Dirt.TAG)
-  },
-
-  intersectsWithPoint: function (point) {
-    return this.worldBoundsIntersectsWithPoint(point)
   }
 })
 
