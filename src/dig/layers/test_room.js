@@ -95,6 +95,10 @@ dig.Layers.TestRoom = dig.Layer.extend({
     return this.getChildByTag(dig.Sprites.GoldBin.TAG)
   },
 
+  getGoldChance: function () {
+    return this.getScore().getMultiplier() * 10
+  },
+
   getScore: function () {
     return this.getChildByTag(dig.Labels.Score.TAG)
   },
@@ -146,8 +150,23 @@ dig.Layers.TestRoom = dig.Layer.extend({
     return wrongBin.intersectsSprite(this.movingSprite)
   },
 
+  removeMovingSpriteScore: function () {
+    this.getScore().removeFromScore(this.movingSprite.getScorePoint())
+  },
+
   removeMultiplier: function () {
     this.getScore().resetMultiplier()
+  },
+
+  spawnReplacementDirt: function () {
+    var newDirt = null
+    if (Math.random <= this.getGoldChance()) {
+      newDirt = new dig.Sprites.GoldBar()
+    } else {
+      newDirt = new dig.Sprites.Dirt()
+    }
+    this.addDirt(newDirt)
+    newDirt.setPosition(this.movingSpriteOriginalPosition)
   },
 
   spriteBeingDragged: function () {
@@ -164,9 +183,12 @@ dig.Layers.TestRoom = dig.Layer.extend({
     if (this.movingSpriteDroppedIntoCorrectBin()) {
       this.addMovingSpriteScore()
       this.addMovingSpriteMultiplier()
+      this.spawnReplacementDirt()
     } else if (this.movingSpriteDroppedIntoWrongBin()) {
+      this.removeMovingSpriteScore()
       this.removeMultiplier()
       this.removeChild(this.movingSprite)
+      this.spawnReplacementDirt()
     } else {
       this.movingSprite.setPosition(this.movingSpriteOriginalPosition)
     }
