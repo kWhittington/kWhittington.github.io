@@ -23,6 +23,7 @@
     "src/dig/label.js",
     "src/dig/labels.js",
     "src/dig/labels/test_room.js",
+    "src/dig/labels/score.js",
     "src/dig/layer.js",
     "src/dig/layers.js",
     "src/dig/layers/test_room.js",
