@@ -28,7 +28,7 @@ dig.Layers.TestRoom = dig.Layer.extend({
   },
 
   addDirtLayer: function () {
-    this.addDirtFrom(dig.Factories.Dirt.mixedGrid(
+    this.addDirtFrom(dig.Factories.Dirt.grid(
       dig.Layers.TestRoom.DIRT_COLUMNS,
       dig.Layers.TestRoom.DIRT_ROWS
     ))

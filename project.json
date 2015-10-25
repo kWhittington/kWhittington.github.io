@@ -35,11 +35,18 @@
     "src/dig/layers.js",
     "src/dig/layers/game_over.js",
     "src/dig/layers/start.js",
+    "src/dig/layers/tutorial_one.js",
+    "src/dig/layers/tutorial_two.js",
+    "src/dig/layers/tutorial_three.js",
+    "src/dig/layers/tutorial_four.js",
+    "src/dig/layers/tutorial_five.js",
+    "src/dig/layers/tutorial_six.js",
     "src/dig/layers/test_room.js",
     "src/dig/scene.js",
     "src/dig/scenes.js",
     "src/dig/scenes/start.js",
     "src/dig/scenes/test_room.js",
+    "src/dig/scenes/tutorial.js",
     "src/dig/scenes/game_over.js",
     "src/resource.js"
   ]
