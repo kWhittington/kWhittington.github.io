@@ -1,6 +1,5 @@
 dig.Labels.GameOver = dig.Label.extend({
   ctor: function (score, multiplier) {
-    cc.log('Score: ' + score)
     var scoreString = 'SCORE: ' + score + '\n' +
       'Best Multiplier: ' + multiplier
     this._super(scoreString, 'Monaco', 38)

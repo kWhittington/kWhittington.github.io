@@ -7,7 +7,15 @@ dig.Layers.GameOver = dig.Layer.extend({
     this.score = score
     this.multiplier = multiplier
     this.initailizeScoreLabel()
+    this.initializeRedoButton()
     this.setTag(dig.Layers.GameOver.TAG)
+  },
+
+  initializeRedoButton: function () {
+    var button = new dig.Buttons.Redo()
+    this.addChild(button)
+    button.centerOn(cc.winSize)
+    button.setPositionY(100)
   },
 
   initailizeScoreLabel: function () {
