@@ -18,7 +18,7 @@ dig.Factories.Dirt = {
 
   horizontalPositionOfColumn: function (column) {
     var width = 64
-    var padding = 200
+    var padding = 232
     return padding + width * column
   },
 
