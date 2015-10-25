@@ -4,6 +4,7 @@ dig.Layers.Start = dig.Layer.extend({
     this.setTag(dig.Layers.Start.TAG)
     this.initializeStartButton()
     this.initializeHowToPlayButton()
+    this.initializeTitle()
   },
 
   getHowToPlayButton: function () {
@@ -23,7 +24,15 @@ dig.Layers.Start = dig.Layer.extend({
   initializeStartButton: function () {
     this.addChild(new dig.Labels.Start())
     this.getStartButton().centerOn(cc.winSize)
-    this.getStartButton().setPositionY(200)
+    this.getStartButton().setPositionY(180)
+  },
+
+  initializeTitle: function () {
+    var title = new dig.Label('DIG', 'Impact', 200, cc.size(512, 210))
+    title.setHorizontalAlignment(cc.TEXT_ALIGNMENT_CENTER)
+    title.centerOn(cc.winSize)
+    title.setPositionY(330)
+    this.addChild(title)
   }
 })
 
