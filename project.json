@@ -6,11 +6,12 @@
   "id": "gameCanvas",
   "renderMode": 0,
   "engineDir": "frameworks/cocos2d-html5",
-  "modules": ["cocos2d"],
+  "modules": ["cocos2d", "extensions"],
   "jsList": [
     "lib/cc/node.js",
     "src/dig.js",
     "src/dig/node.js",
+    "src/dig/button.js",
     "src/dig/factories.js",
     "src/dig/factories/dirt.js",
     "src/dig/event_listeners.js",
