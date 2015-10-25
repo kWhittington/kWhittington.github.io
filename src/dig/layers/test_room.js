@@ -1,3 +1,4 @@
+dig.layer = null
 dig.Layers.TestRoom = dig.Layer.extend({
   movingSprite: null,
   movingSpriteOriginalPosition: null,
@@ -12,11 +13,10 @@ dig.Layers.TestRoom = dig.Layer.extend({
     this.initializeDirtBin()
     this.initializeGoldBin()
     this.initializeScore()
+    this.initializeStrikes()
   },
 
   addDirt: function (dirt) {
-    cc.log(dirt)
-    cc.log(this.spriteZIndex)
     this.addChild(dirt, this.spriteZIndex)
     this.spriteZIndex--
   },
@@ -40,6 +40,16 @@ dig.Layers.TestRoom = dig.Layer.extend({
 
   addMovingSpriteMultiplier: function () {
     this.getScore().addToMultiplier(this.movingSprite.getMultiplier())
+  },
+
+  addStrike: function () {
+    this.getStrikes().addStrike()
+    if (this.getStrikes().atMax()) {
+      cc.director.runScene(new dig.Scenes.GameOver(
+        this.getScore().score,
+        this.getScore().highestMultiplier
+      ))
+    }
   },
 
   childrenIntersectingWith: function (point) {
@@ -91,6 +101,10 @@ dig.Layers.TestRoom = dig.Layer.extend({
     return this.getChildByTag(dig.Sprites.DirtBin.TAG)
   },
 
+  getGameOver: function () {
+    return this.getChildByTag(dig.Layers.GameOver.TAG)
+  },
+
   getGoldBin: function () {
     return this.getChildByTag(dig.Sprites.GoldBin.TAG)
   },
@@ -101,6 +115,10 @@ dig.Layers.TestRoom = dig.Layer.extend({
 
   getScore: function () {
     return this.getChildByTag(dig.Labels.Score.TAG)
+  },
+
+  getStrikes: function () {
+    return this.getChildByTag(dig.Labels.Strikes.TAG)
   },
 
   getTopClickableChildIntersectingPoint: function (point) {
@@ -126,6 +144,14 @@ dig.Layers.TestRoom = dig.Layer.extend({
     )
   },
 
+  initializeGameOverLayer: function () {
+    this.addChild(new dig.Layers.GameOver())
+    dig.layer = this.getGameOver()
+    this.getGameOver().setPosition(
+      dig.Layers.TestRoom.STARTING_POSITIONS.GAME_OVER
+    )
+  },
+
   initializeGoldBin: function () {
     this.addChild(new dig.Sprites.GoldBin())
     this.getGoldBin().setPosition(
@@ -137,6 +163,13 @@ dig.Layers.TestRoom = dig.Layer.extend({
     this.addChild(new dig.Labels.Score())
     this.getScore().setPosition(
       dig.Layers.TestRoom.STARTING_POSITIONS.SCORE
+    )
+  },
+
+  initializeStrikes: function () {
+    this.addChild(new dig.Labels.Strikes())
+    this.getStrikes().setPosition(
+      dig.Layers.TestRoom.STARTING_POSITIONS.STRIKES
     )
   },
 
@@ -187,6 +220,7 @@ dig.Layers.TestRoom = dig.Layer.extend({
     } else if (this.movingSpriteDroppedIntoWrongBin()) {
       this.removeMovingSpriteScore()
       this.removeMultiplier()
+      this.addStrike()
       this.removeChild(this.movingSprite)
       this.spawnReplacementDirt()
     } else {
@@ -209,6 +243,8 @@ dig.Layers.TestRoom.DIRT_COLUMNS = 6
 dig.Layers.TestRoom.DIRT_ROWS = 6
 dig.Layers.TestRoom.STARTING_POSITIONS = {
   DIRT_BIN: cc.p(100, 193),
+  GAME_OVER: cc.p(0, 0),
   GOLD_BIN: cc.p(700, 193),
-  SCORE: cc.p(727, 413)
+  SCORE: cc.p(727, 413),
+  STRIKES: cc.p(145, 413)
 }

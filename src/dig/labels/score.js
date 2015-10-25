@@ -1,4 +1,5 @@
 dig.Labels.Score = dig.Label.extend({
+  highestMultiplier: 1,
   multiplier: 1,
   score: 0,
 
@@ -17,6 +18,9 @@ dig.Labels.Score = dig.Label.extend({
 
   addToMultiplier: function (multiplier) {
     this.multiplier = this.multiplier + multiplier
+    if (this.highestMultiplier < this.multiplier) {
+      this.highestMultiplier = this.multiplier
+    }
     this.updateScore()
   },
 
