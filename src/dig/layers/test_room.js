@@ -43,8 +43,11 @@ dig.Layers.TestRoom = dig.Layer.extend({
   },
 
   detectDraggingSpriteAt: function (point) {
-    if (this.childrenIntersectingWith(point).length != 0)
-      this.startDraggingSprite(this.topChildIntersectingWith(point))
+    if (this.getClickableChildrenIntersectingPoint(point).length != 0) {
+      this.startDraggingSprite(this.getTopClickableChildIntersectingPoint(
+        point
+      ))
+    }
   },
 
   dragSpriteBy: function (target) {
@@ -52,8 +55,29 @@ dig.Layers.TestRoom = dig.Layer.extend({
     this.movingSprite.setPosition(sum)
   },
 
+  getClickableChildren: function () {
+    var children = []
+
+    return this.getChildren().filter(function (child) {
+      return dig.Layers.TestRoom.CLICKABLE_TAGS.indexOf(child.getTag()) >= 0
+    })
+  },
+
+  getClickableChildrenIntersectingPoint: function (point) {
+    return this.getClickableChildren().filter(function (child) {
+      if (child.intersectsWithPoint != null) {
+        return child.intersectsWithPoint(point)
+      }
+      return false
+    })
+  },
+
   getDirtBin: function () {
     return this.getChildByTag(dig.Sprites.DirtBin.TAG)
+  },
+
+  getTopClickableChildIntersectingPoint: function (point) {
+    return this.getClickableChildrenIntersectingPoint(point)[0]
   },
 
   initializeDirt: function () {
@@ -88,6 +112,9 @@ dig.Layers.TestRoom = dig.Layer.extend({
   }
 })
 
+dig.Layers.TestRoom.CLICKABLE_TAGS = [
+  dig.Sprites.Dirt.TAG
+]
 dig.Layers.TestRoom.DIRT_COLUMNS = 6
 dig.Layers.TestRoom.DIRT_ROWS = 6
 dig.Layers.TestRoom.STARTING_POSITIONS = {

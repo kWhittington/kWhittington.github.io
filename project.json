@@ -15,6 +15,10 @@
     "src/dig/factories/dirt.js",
     "src/dig/event_listeners.js",
     "src/dig/event_listeners/mouse_click_and_drag_to_move_listener.js",
+    "src/dig/sprite.js",
+    "src/dig/sprites.js",
+    "src/dig/sprites/dirt.js",
+    "src/dig/sprites/dirt_bin.js",
     "src/dig/label.js",
     "src/dig/labels.js",
     "src/dig/labels/test_room.js",
@@ -24,10 +28,6 @@
     "src/dig/scene.js",
     "src/dig/scenes.js",
     "src/dig/scenes/test_room.js",
-    "src/dig/sprite.js",
-    "src/dig/sprites.js",
-    "src/dig/sprites/dirt.js",
-    "src/dig/sprites/dirt_bin.js",
     "src/resource.js"
   ]
 }
