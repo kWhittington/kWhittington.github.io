@@ -5,16 +5,12 @@ dig.Layers.TestRoom = dig.Layer.extend({
   ctor: function () {
     this._super()
 
-    var label = new dig.Labels.TestRoom()
-    label.centerOn(cc.winSize)
-
-    this.addChild(label)
-
     var clickListener = dig.EventListeners.MouseClickAndDragToMove.clone()
     cc.eventManager.addListener(clickListener, this)
     this.initializeDirt()
     this.initializeDirtBin()
     this.initializeGoldBin()
+    this.initializeScore()
   },
 
   addDirt: function (dirt) {
@@ -81,6 +77,10 @@ dig.Layers.TestRoom = dig.Layer.extend({
     return this.getChildByTag(dig.Sprites.GoldBin.TAG)
   },
 
+  getScore: function () {
+    return this.getChildByTag(dig.Labels.Score.TAG)
+  },
+
   getTopClickableChildIntersectingPoint: function (point) {
     return this.getClickableChildrenIntersectingPoint(point)[0]
   },
@@ -103,6 +103,13 @@ dig.Layers.TestRoom = dig.Layer.extend({
     this.addChild(new dig.Sprites.GoldBin())
     this.getGoldBin().setPosition(
       dig.Layers.TestRoom.STARTING_POSITIONS.GOLD_BIN
+    )
+  },
+
+  initializeScore: function () {
+    this.addChild(new dig.Labels.Score())
+    this.getScore().setPosition(
+      dig.Layers.TestRoom.STARTING_POSITIONS.SCORE
     )
   },
 
@@ -131,5 +138,6 @@ dig.Layers.TestRoom.DIRT_COLUMNS = 6
 dig.Layers.TestRoom.DIRT_ROWS = 6
 dig.Layers.TestRoom.STARTING_POSITIONS = {
   DIRT_BIN: cc.p(100, 193),
-  GOLD_BIN: cc.p(700, 193)
+  GOLD_BIN: cc.p(700, 193),
+  SCORE: cc.p(727, 413)
 }
