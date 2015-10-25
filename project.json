@@ -19,6 +19,7 @@
     "src/dig/sprites.js",
     "src/dig/sprites/dirt.js",
     "src/dig/sprites/dirt_bin.js",
+    "src/dig/sprites/gold_bar.js",
     "src/dig/sprites/gold_bin.js",
     "src/dig/label.js",
     "src/dig/labels.js",
