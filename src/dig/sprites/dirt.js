@@ -9,12 +9,16 @@ dig.Sprites.Dirt = dig.Sprite.extend({
     return dig.Sprites.DirtBin.TAG
   },
 
-  getWrongBinTag: function () {
-    return dig.Sprites.GoldBin.TAG
+  getMultiplier: function () {
+    return 0
   },
 
   getScorePoint: function () {
     return 1
+  },
+
+  getWrongBinTag: function () {
+    return dig.Sprites.GoldBin.TAG
   }
 })
 
