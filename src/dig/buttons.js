@@ -1,1 +1,0 @@
-dig.Buttons = dig.Buttons || {}

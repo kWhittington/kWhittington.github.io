@@ -1,1 +1,0 @@
-dig.Scene = cc.Scene

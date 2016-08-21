@@ -1,1 +1,0 @@
-dig.EventListeners = dig.EventListeners || {}

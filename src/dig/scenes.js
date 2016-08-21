@@ -1,1 +1,0 @@
-dig.Scenes = dig.Scenes || {}
