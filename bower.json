@@ -19,5 +19,7 @@
     "test",
     "tests"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "knockout": "knockoutjs#^3.4.0"
+  }
 }
