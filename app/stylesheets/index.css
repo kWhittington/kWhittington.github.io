@@ -1,0 +1,57 @@
+body {
+  background-color: rgb(20, 20, 20);
+  color: rgb(220, 220, 220);
+}
+
+/* Stolen from:
+  https://www.w3schools.com/howto/howto_css_image_overlay_icon.asp */
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: rgba(15, 15, 15, 0.92);
+}
+
+.overlay .centered-subtitle {
+  color: rgb(210, 210, 210);
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  top: 60%;
+}
+
+.overlay .centered-title {
+  color: rgb(220, 220, 220);
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  top: 50%;
+}
+
+.section {
+  position: relative;
+  height: auto;
+}
+
+.section:hover img {
+  filter: grayscale(80%);
+}
+
+.section:hover .overlay {
+  opacity: 1;
+}
