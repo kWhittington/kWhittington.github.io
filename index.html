@@ -6,7 +6,9 @@
   <link rel="stylesheet" type="text/css" href="app/stylesheets/normalize.css"/>
   <link rel="stylesheet" type="text/css" href="app/stylesheets/skeleton.css"/>
   <link rel="stylesheet" type="text/css" href="app/stylesheets/index.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="vendor/highlight/styles/androidstudio.css">
+  <script src="vendor/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
   <div class="section">
@@ -41,6 +43,38 @@
         </h1>
         <h5 class="centered-subtitle">
           What Kind of Cars Does NOPD Stop?
+        </h5>
+      </div>
+    </a>
+  </div>
+
+  <div id="united_states" class="section">
+    <a href="https://github.com/kwhittington/united_states"
+      title="united_states">
+      <pre>
+        <code class="ruby">
+require 'united_states'
+
+UnitedStates.all
+# =&gt; [#&lt;UnitedStates::State::Designation...@string="WY"&gt;]
+UnitedStates.names
+# =&gt; [#&lt;UnitedStates::State::Name...@string="Wyoming"&gt;]
+UnitedStates.postal_codes
+# =&gt; [#&lt;UnitedStates::State::PostalCode...@string="WY"]
+UnitedStates[:LA]
+# =&gt; [#&lt;UnitedStates::State::Designation...@string="LA"&gt;]
+UnitedStates['mississippi']
+# =&gt; [#&lt;UnitedStates::State::Designation...@string="MS"&gt;]
+UnitedStates['car']
+# =&gt; UnitedStates::NoDesignationFoundError
+        </code>
+      </pre>
+      <div class="overlay">
+        <h1 class="centered-title">
+          united_states
+        </h1>
+        <h5 class="centered-subtitle">
+          Ruby gem for U.S.A. state abbreviation.
         </h5>
       </div>
     </a>

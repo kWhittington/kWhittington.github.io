@@ -55,3 +55,7 @@ body {
 .section:hover .overlay {
   opacity: 1;
 }
+
+.section a {
+  text-decoration: none;
+}
